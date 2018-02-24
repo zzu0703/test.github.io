@@ -1,1 +1,35 @@
 个人博客
+java面试题
+  静态变量和实例变量的区别：
+在语法定义上的区别：静态变量前要加static关键字，而实例变量前则不加。
+在程序运行时的区别：实例变量属于某个对象的属性，必须创建了实例对象，其中的实例变量才会被分配空间，才能使用这个实例变量。
+静态变量不属于某个实例对象，而是属于类，所以也称谓类变量，只要程序加载了类的字节码，不用创建任何实例对象，静态变量就会被
+分配空间，静态变量就可以被使用了。总之，实例变量必须创建对象后才可以通过这个对象来使用，静态变量则可以直接使用类名来引用。
+  例如，对于下面的程序，无论创建多少个实例对象，永远都只分配一个staticVar变量，并且每创建
+一个实例对象，这个staticVar就会加1；但是，每创建一个实例对象，就会分配一个instanceVar，即可能
+分配多个instanceVar，并且每个instance Var的值只自加了1 次。
+
+public class VariantTest{
+		public static int staticVar = 0; 
+		public int instanceVar = 0; 
+		public VariantTest(){
+			staticVar++;
+			instanceVar++;
+			System.out.println(“staticVar=” + staticVar + ”,instanceVar=” + instanceVar);
+		}
+}
+
+
+  Integer与int的区别
+int是java提供的8种原始数据类型之一。java为每个原始类型提供了封装类，Integer是java为int提
+供的封装类。int的默认值为0，而Integer的默认值为null，即Integer可以区分出未赋值和值为0的区别，
+int则无法表达出未赋值的情况。例如，要想表达出没有参加考试和考试成绩为0的区别，则只能使用Integer。
+在jsp开发中，Integer的默认为null，所以用el表达式在文本框中显示时，值为空白字符串，而int默认
+的默认值为0，所以用el表达式在文本框中显示时，结果为0 ，所以，int不适合作为web层的表单数据的类型。
+
+java中包装类型的作用
+1.有时候一个函数需要传递一个object变量，而你想传递int类型的进去显然不行，这就要用到包装类
+2.集合不允许存放基本类型数据，只能存放包装类型
+3.基本类型和包装类之间可以相互转换
+4.基本类型之间相互转换
+5.通过包装类，String可以和基本类型之间相互转换
